@@ -23,54 +23,163 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <style media="screen">
-      /* Add your custom CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+  *, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+$openSans: 'Open Sans', Helvetica, Arial, sans-serif;
+body {
+  background: #15181A;
+  font-family: $openSans;
+}
+
+.skw-pages {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+$skewDeg: 18deg;
+$magicVH: 32.4vh; // this number is magic and depends on skew angle
+$scrollTime: 1s;
+
+.skw-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  &__half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    transition: transform $scrollTime;
+
+    &--left {
+      left: 0;
+      transform: translate3d(-$magicVH, 100%, 0);
+        }
+
+    &--right {
+      left: 50%;
+      transform: translate3d($magicVH, -100%, 0);
     }
 
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
+    .skw-page.active & {
+      transform: translate3d(0,0,0);
+    }
+  }
+
+  &__skewed {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 140%;
+    height: 100%;
+    transform: skewX($skewDeg * -1);
+    background: #000;
+
+    .skw-page__half--left & {
+      left: -40%;
+    }
+    .skw-page__half--right & {
+      right: -40%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 30%;
+    color: #fff;
+    transform: skewX($skewDeg);
+    transition: transform $scrollTime, opacity $scrollTime;
+    background-size: cover;
+
+    .skw-page__half--left & {
+      padding-left: 30%;
+      padding-right: 30%;
+      transform-origin: 100% 0;
+    }
+    .skw-page__half--right & {
+      padding-left: 30%;
+      padding-right: 30%;
+      transform-origin: 0 100%;
     }
 
-    h1 {
-      font-size: 32px;
-      margin: 0;
+    .skw-page.inactive & {
+      opacity: 0.5;
+      transform: skewX($skewDeg) scale(0.95);
     }
+  }
 
-    section {
-      padding: 40px;
-      text-align: center;
-    }
+  &__heading {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align: center;
+  }
 
-    h2 {
-      font-size: 24px;
-    }
+  &__description {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  &__link {
+    color: #FFA0A0;
+  }
 
-    p {
-      font-size: 16px;
-      margin-bottom: 20px;
+  &-1 {
+    .skw-page__half--left .skw-page__content {
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/mousover-img-1.jpg');
     }
+    .skw-page__half--right .skw-page__content {
+      background: lighten(#1C1C1C, 5%);
+    }
+  }
+  &-2 {
+    .skw-page__half--left .skw-page__content {
+      background: lighten(#1C1C1C, 5%);
+    }
+    .skw-page__half--right .skw-page__content {
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/slider-2.jpg');
+    }
+  }
+  &-3 {
+    .skw-page__half--left .skw-page__content {
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/mousover-img-2.jpg');
+    }
+    .skw-page__half--right .skw-page__content {
+      background: lighten(#1C1C1C, 5%);
+    }
+  }
+  &-4 {
+    .skw-page__half--left .skw-page__content {
+      background: lighten(#1C1C1C, 5%);
+    }
+    .skw-page__half--right .skw-page__content {
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');
+    }
+  }
+  &-5 {
+    .skw-page__half--left .skw-page__content {
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/img-test.jpg');
+    }
+    .skw-page__half--right .skw-page__content {
+      background: lighten(#1C1C1C, 5%);
+    }
+  }
+}
 
-    .cta-button {
-      background-color: #333;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-size: 18px;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #666;
-    }
     </style>
   </head>
   <body>
@@ -78,53 +187,148 @@
       <h1>Black Stone Marketing LLC</h1>
     </header>
     
-    <section>
+<!--     <section>
       <h2>Specializing in Digital Marketing and Office IT Management</h2>
       <p>Welcome to Black Stone Marketing LLC, your trusted partner for comprehensive digital marketing solutions and office IT management services.</p>
       <p>With our expertise in the digital landscape and deep understanding of IT systems, we help businesses thrive in the competitive online marketplace while ensuring smooth operations.</p>
       <p>Contact us today to discuss how we can elevate your brand, optimize your online presence, and streamline your office IT infrastructure.</p>
       <a href="mailto:info@blackstonemarketing.com" class="cta-button">Contact Us</a>
-    </section>
-    
+    </section> -->
+    <div class="skw-pages">
+  <div class="skw-page skw-page-1 active">
+    <div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content"></div>
+      </div>
+    </div>
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <h2 class="skw-page__heading">Skewed One Page Scroll</h2>
+          <p class="skw-page__description">Just scroll down</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skw-page skw-page-2">
+    <div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <h2 class="skw-page__heading">Page 2</h2>
+          <p class="skw-page__description">Nothing to do here, continue scrolling.</p>
+        </div>
+      </div>
+    </div>
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content"></div>
+      </div>
+    </div>
+  </div>
+  <div class="skw-page skw-page-3">
+    <div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content"></div>
+      </div>
+    </div>
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <h2 class="skw-page__heading">Page 3</h2>
+          <p class="skw-page__description">The end is near, I promise!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skw-page skw-page-4">
+    <div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <h2 class="skw-page__heading">Page 4</h2>
+          <p class="skw-page__description">Ok, ok, just one more scroll!</p>
+        </div>
+      </div>
+    </div>
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content"></div>
+      </div>
+    </div>
+  </div>
+  <div class="skw-page skw-page-5">
+    <div class="skw-page__half skw-page__half--left">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content"></div>
+      </div>
+    </div>
+    <div class="skw-page__half skw-page__half--right">
+      <div class="skw-page__skewed">
+        <div class="skw-page__content">
+          <h2 class="skw-page__heading">Epic finale</h2>
+          <p class="skw-page__description">
+            Feel free to check 
+            <a class="skw-page__link" href="https://codepen.io/suez/pens/public/" target="_blank">my other pens</a> and follow me on 
+            <a class="skw-page__link" href="https://twitter.com/NikolayTalanov" target="_blank">Twitter</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    $(document).ready(function() {
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+  var curPage = 1;
+  var numOfPages = $(".skw-page").length;
+  var animTime = 1000;
+  var scrolling = false;
+  var pgPrefix = ".skw-page-";
+
+  function pagination() {
+    scrolling = true;
+
+    $(pgPrefix + curPage).removeClass("inactive").addClass("active");
+    $(pgPrefix + (curPage - 1)).addClass("inactive");
+    $(pgPrefix + (curPage + 1)).removeClass("active");
+
+    setTimeout(function() {
+      scrolling = false;
+    }, animTime);
+  };
+
+  function navigateUp() {
+    if (curPage === 1) return;
+    curPage--;
+    pagination();
+  };
+
+  function navigateDown() {
+    if (curPage === numOfPages) return;
+    curPage++;
+    pagination();
+  };
+
+  $(document).on("mousewheel DOMMouseScroll", function(e) {
+    if (scrolling) return;
+    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+      navigateUp();
+    } else { 
+      navigateDown();
+    }
+  });
+
+  $(document).on("keydown", function(e) {
+    if (scrolling) return;
+    if (e.which === 38) {
+      navigateUp();
+    } else if (e.which === 40) {
+      navigateDown();
+    }
+  });
+
+});
     </script>
   </body>
 </html>
