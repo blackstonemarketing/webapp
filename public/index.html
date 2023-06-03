@@ -1,130 +1,238 @@
-<!DOCTYPE html>
-<html>
-  <head>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Startup | Script Eden</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Black Stone Marketing LLC</title>
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.22.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.22.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.22.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      /* Add your custom CSS styles here */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin: 0;
-    }
-
-    section {
-      padding: 40px;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 24px;
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-
-    .cta-button {
-      background-color: #333;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      font-size: 18px;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #666;
-    }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Black Stone Marketing LLC</h1>
-    </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/22583091.js"></script>
+    <!-- End of HubSpot Embed Code -->
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="bootstrap-4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/linearicons.min.css">
+    <link rel="stylesheet" href="css/elements.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/responsive.css">
     
-    <section>
-      <h2>Specializing in Digital Marketing and Office IT Management</h2>
-      <p>Welcome to Black Stone Marketing LLC, your trusted partner for comprehensive digital marketing solutions and office IT management services.</p>
-      <p>With our expertise in the digital landscape and deep understanding of IT systems, we help businesses thrive in the competitive online marketplace while ensuring smooth operations.</p>
-      <p>Contact us today to discuss how we can elevate your brand, optimize your online presence, and streamline your office IT infrastructure.</p>
-      <a href="mailto:info@blackstonemarketing.com" class="cta-button">Contact Us</a>
-    </section>
-    
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+    <link rel="shortcut icon" href="images/scripteden.png"> 
+    <!-- <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
     </script>
-  </body>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init("QMmc75v3HqFMF11Lp");
+        })();
+     </script>  -->
+</head>
+
+<body>
+    <div class="wraper">
+        <header class="home align-items-center">
+            <div class="ccontainer-fluid">
+                <div class="row no-gutters">
+                    <div class="col-xl-7 col-lg-8 col-md-8d gradient-1">
+                        <div class="intro text-center">
+                            <img src="assets/img/home-bg.jpg" class="w-100" alt="">
+                        </div>    
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-4d align-self-center">
+                        <div class="my-self text-center">
+                            <h1>Welcome to Black Stone Marketing</h1>
+                            <p>At Black Stone Marketing LLC, we believe in the power of effective marketing strategies to drive business growth and success. 
+                                We are a full-service marketing agency dedicated to helping businesses of all sizes and industries achieve their goals through 
+                                innovative and tailored marketing solutions. Our team of experienced professionals is committed to delivering outstanding results 
+                                and exceeding our clients' expectations.</p>
+                                <!-- data-toggle="modal" data-target=".bd-example-modal-lg" -->
+                            <a href="portfolio.html" class="btn main-btn" >Learn More</a>
+                            <div>
+                               <ul class="list-inline icons">
+                                    <li class="list-inline-item"><i class="fa fa-pinterest"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-google-plus"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-dribbble"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-instagram"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-github"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+        <!-- Large modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                   <div class="float-right"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="lnr lnr-cross"></i></button></div>
+                    <ul class="nav nav-tabs" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div><img src="images/image5.jpg" class="img-fluid" alt=""></div>
+                            <div class="pane-content">
+                                <section id="price-section">
+                                    <div class="container">
+                                        <div class="row justify-content-center gapsectionsecond">
+                                            <div class="col-lg-7 text-center">
+                                                <div class="title-big pb-3 mb-3">
+                                                    <h3>SERVICE PRICES</h3>
+                                                </div>
+                                                <p class="description-p text-muted pe-0 pe-lg-0">
+                                                    Welcome to our Service Page! We are proud to offer a comprehensive range of services tailored to meet your specific needs. Our experienced team is dedicated to delivering high-quality care in a comfortable and welcoming environment.                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-5">
+                                            <div class="col-lg-4 pb-5 pb-lg-0">
+                                                <div class="wrap-price">
+                                                    <div class="price-innerdetail text-center">
+                                                        <h5>MINIMUM BASIC SERVICE</h5>
+                                                        <!-- <p class="prices">150$</p> -->
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Photoshoot duration </span>
+                                                            <span class="float-right">4 Hours</span>
+                                                        </div>
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Number photo</span>
+                                                            <span class="float-right">50 - 200</span>
+                                                        </div>
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Consultation</span>
+                                                            <span class="float-right">Style</span>
+                                                        </div>
+                                                        <a href="#" class="btn btn-secondary mt-5">Schedule</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 pb-5 pb-lg-0">
+                                                <div class="wrap-price center-wrap">
+                                                    <div class="price-innerdetail text-center">
+                                                        <h5>PRO SERVICE</h5>
+                                                        <!-- <p class="prices">350$</p> -->
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Photoshoot duration </span>
+                                                            <span class="float-right">4 Hours</span>
+                                                        </div>
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Number photo</span>
+                                                            <span class="float-right">50 - 200</span>
+                                                        </div>
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Consultation</span>
+                                                            <span class="float-right">Style</span>
+                                                        </div>
+                                                        <a href="#" class="btn btn-secondary mt-5">Schedule</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 pb-5 pb-lg-0">
+                                                <div class="wrap-price">
+                                                    <div class="price-innerdetail text-center">
+                                                        <h5>STANDART SERVICE</h5>
+                                                        <!-- <p class="prices">250$</p> -->
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Photoshoot duration </span>
+                                                            <span class="float-right">4 Hours</span>
+                                                        </div>
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Number photo</span>
+                                                            <span class="float-right">50 - 200</span>
+                                                        </div>
+                                                        <div class="detail-pricing">
+                                                            <span class="float-left"> <i class="bi bi-check2-circle"></i> Consultation</span>
+                                                            <span class="float-right">Style</span>
+                                                        </div>
+                                                        <a href="#" class="btn btn-secondary mt-5">Schedule</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>    
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div><img src="images/pic04.jpg" class="img-fluid" alt=""></div>
+                            <div class="pane-content">
+                                <p>
+                                    Thank you for entrusting your marketing needs to Black Stone Marketing LLC. We are honored to have you as a valued client, and we look forward to continuing our partnership as we strive to achieve new heights together.
+                                </p>
+                                <div class="pane-content">
+                                <ul>
+                                    <li class="client">
+                                      <img src="images/cropped-B-2.png" alt="MyGcDental Logo">
+                                      <div>
+                                        <a href="https://mygcdental.com">MyGcDental</a>
+                                        <p>MyGCDental is a prominent dental practice dedicated to providing exceptional oral healthcare services to patients.</p>
+                                      </div>
+                                    </li>
+                                    <li class="client">
+                                      <img src="images/logo_novaSmile.png" alt="Nova Smile Dental Logo">
+                                      <div>
+                                        <a href="https://novasmiledental.com">Nova Smile Dental</a>
+                                        <p>Nova Smile Dental is a reputable dental clinic committed to delivering exceptional oral healthcare services to patients of all ages. </p>
+                                      </div>
+                                    </li>
+                                    <li class="client">
+                                      <img src="images/logo_peach.jpeg" alt="Peach Construction Logo">
+                                      <div>
+                                        <a href="https://peachconstructionllc.com">Peach Construction LLC</a>
+                                        <p>A global logistics company providing efficient supply chain solutions.</p>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                  </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <div><img src="images/image5.jpg" class="img-fluid" alt=""></div>
+                            <div class="pane-content contact-form">
+                                <form id="contact-form">
+                                    <div class="form-row">
+                                        <div class=" form-group col-12">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Name">
+                                        </div>
+                                        <div class="form-group col-12"> 
+                                            <input type="email" class="form-control form-control-lg" placeholder="Email">
+                                        </div>
+                                        <div class="form-group col-12"> 
+                                            <textarea type="email" class="form-control form-control-lg" placeholder="Write Something Here..." rows="7"></textarea>
+                                        </div>
+                                        <div class="form-group col-12"> 
+                                            <input href="#" class="btn" type="submit"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="bootstrap-4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
 </html>
