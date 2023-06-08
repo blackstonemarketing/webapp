@@ -445,6 +445,27 @@ p {
   display: block;
 }
 
+.arrow-container {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+}
+
+.arrow {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.section {
+  height: 100vh; /* Adjust the height based on your page structure */
+  background-color: #f0f0f0; /* Set a background color for the sections */
+}
+
+
 /*--------------------------------------------------------------
 # Hero
 --------------------------------------------------------------*/
